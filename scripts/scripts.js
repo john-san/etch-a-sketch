@@ -30,6 +30,18 @@ function createGrid(size) {
     const newRow = createRow(size);
     document.querySelector('#mainContainer').appendChild(newRow);
   }
+  attachSquareEvents();
 }
 
 createGrid();
+
+function attachSquareEvents() {
+  const allSquares = [...document.querySelectorAll('.square')];
+
+  for (let i=0; i < allSquares.length; i++) {
+    allSquares[i].addEventListener('mouseenter', (e) => {
+      console.log("entered");
+      e.target.classList.add('active');
+    });
+  }
+}
