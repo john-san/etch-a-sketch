@@ -4,6 +4,10 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  margin-bottom: 25px;
+}
+
+#mainContainer {
   height: 600px;
 }
 

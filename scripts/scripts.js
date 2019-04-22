@@ -21,10 +21,30 @@ function createRow(rowLength) {
 
 // function to generate grid
 // max should be 100
-function createGrid(size) {
-  if (size == null) {
-    size = 16;
+function validateGridSize(size) {
+  if (size >=16 && size <= 100) {
+    return size
+  } else {
+    return 16;
   }
+}
+
+function eraseGridColor() {
+  const allSquares = [...document.querySelectorAll(".square")];
+  allSquares.forEach((square) => {
+    square.classList.remove("active");
+  });
+}
+
+function deleteGrid() {
+  const allRows = [...document.querySelectorAll("#mainContainer .row")];
+  allRows.forEach((row) => {
+    document.querySelector("#mainContainer").removeChild(row);
+  });
+}
+
+function createGrid(size) {
+  size = validateGridSize(size);
 
   for (let i = 0; i < size; i++) {
     const newRow = createRow(size);
@@ -32,8 +52,6 @@ function createGrid(size) {
   }
   attachSquareEvents();
 }
-
-createGrid();
 
 function attachSquareEvents() {
   const allSquares = [...document.querySelectorAll('.square')];
@@ -45,3 +63,15 @@ function attachSquareEvents() {
     });
   }
 }
+
+function newGrid() {
+  deleteGrid();
+  const size = prompt("Pick a grid size between 16 and 100.  Any attempts to troll will result in a 16x16 grid");
+  createGrid(size);
+}
+
+document.querySelector("#clearBtn").addEventListener("click", eraseGridColor);
+document.querySelector("#changeGridSizeBtn").addEventListener("click", newGrid);
+
+// initialize Game
+createGrid();
