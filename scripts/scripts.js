@@ -66,7 +66,7 @@ function attachSquareEvents() {
 
 function newGrid() {
   deleteGrid();
-  const size = prompt("Pick a grid size between 16 and 100.  Any attempts to troll will result in a 16x16 grid");
+  const size = prompt("Pick a grid size between 16 and 100.  Any attempts to troll will result in a 16x16 grid. :)");
   createGrid(size);
 }
 
